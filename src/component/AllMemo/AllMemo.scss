@@ -1,0 +1,35 @@
+@import '../../info';
+
+.AllMemoWrapper {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.bookMode {
+        width: 40%;
+    }
+
+    h1 + div {
+        margin-top: 5%;
+    }
+
+    > .memoWrapper {
+        width: 95%;
+        // min-height: 72%;
+        height: fit-content;
+        margin-top: 3%;
+        padding: 3% 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .BookMemoWrapper + .BookMemoWrapper {
+            margin-top: 3%;
+        }
+
+        > .addMemo {
+            
+        }
+    }
+}

@@ -1,0 +1,11 @@
+@import '../../info';
+
+.BookListWrapper {
+    width: 25%;
+    position: sticky;
+    top: 4%;
+
+    .BookTitle + .BookListItemWrapper {
+        margin-top: 10%;
+    }
+}

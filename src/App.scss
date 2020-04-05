@@ -1,0 +1,26 @@
+@import './info';
+
+#bigWrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & .container {
+    min-height: 90vh;
+    height: fit-content;
+    background-color: $backgroundColor;
+    padding: 1%;
+  }
+
+  > .goToHome {
+    width: 5vh;
+    height: 5vh;
+    display: block;
+    position: fixed;
+    top: 1%;
+    left: 1%;
+  }
+}

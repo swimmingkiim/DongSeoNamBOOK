@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import './App.scss';
+import BookList from './component/BookList';
+import PDFviewer from './component/PDFviewer';
+import AllMemo from './component/AllMemo';
 
-function App() {
+const App = () => {
+
+  const HomeImg = require("./img/book.png");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+      <div id="bigWrapper">
+        <BrowserRouter>
+          <Switch>
+            <Route exact="true" path="/DongSeoNamBOOK" component={BookList} />
+            <Route path="/DongSeoNamBOOK/books/book-name=:bookName/" component={PDFviewer} />
+          </Switch>
+          <Switch>
+            <Route exact="true" path="/DongSeoNamBOOK" component={AllMemo} />
+            <Route path="/DongSeoNamBOOK/books/book-name=:bookName/" component={AllMemo} />
+          </Switch>
+        </BrowserRouter>
+        <a  className="goToHome" href="/DongSeoNamBOOK">
+          <img src={HomeImg} alt="HOME" />
         </a>
-      </header>
-    </div>
+      </div>
   );
 }
 

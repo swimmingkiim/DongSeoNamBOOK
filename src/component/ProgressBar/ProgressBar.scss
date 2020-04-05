@@ -1,0 +1,25 @@
+@import '../../info';
+
+.ProgressBarWrapper {
+
+    width: 90%;
+
+    > span {
+        font-size: 150%;
+    }
+
+    > .fullBar {
+        width: 100%;
+        min-height: .5em;
+        background-color: rgb(241, 196, 15);
+
+        > .readBar {
+            min-height: .5em;
+            background-color: rgb(26, 188, 156);
+        }
+    }
+
+    span + .fullBar {
+        margin-top: 2.5%;
+    }
+}
