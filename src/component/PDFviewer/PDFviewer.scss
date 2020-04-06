@@ -1,7 +1,37 @@
 @import '../../info';
 
 .PDFviewerWrapper {
-    width: fit-content;
+    width: 56%;
     position: sticky;
     top: 5%;
+
+    .PDFPage {
+        height: 85vh;
+        overflow: auto;
+    }
+
+    menu {
+        z-index: 1;
+        width: 100%;
+        height: fit-content;
+        padding: .5% 0;
+        text-align: center;
+
+        .changePageButton {
+            padding: 1% 3%;
+            background-color: $yellow;
+            border: none;
+            border-radius: .5em;
+        }
+
+        .changePageButton + .changePageButton {
+            margin-left: 3%;
+        }
+
+        > span {
+            font-size: 150%;
+            margin: 1.5% 0;
+            margin: 07%;
+        }
+    }
 }
