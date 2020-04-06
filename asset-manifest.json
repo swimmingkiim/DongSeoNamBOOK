@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/DongSeoNamBOOK/static/css/main.b005f349.chunk.css",
-    "main.js": "/DongSeoNamBOOK/static/js/main.b460551d.chunk.js",
-    "main.js.map": "/DongSeoNamBOOK/static/js/main.b460551d.chunk.js.map",
+    "main.js": "/DongSeoNamBOOK/static/js/main.d19f73d1.chunk.js",
+    "main.js.map": "/DongSeoNamBOOK/static/js/main.d19f73d1.chunk.js.map",
     "runtime-main.js": "/DongSeoNamBOOK/static/js/runtime-main.a7aca373.js",
     "runtime-main.js.map": "/DongSeoNamBOOK/static/js/runtime-main.a7aca373.js.map",
     "static/css/2.af0132db.chunk.css": "/DongSeoNamBOOK/static/css/2.af0132db.chunk.css",
     "static/js/2.302da6f3.chunk.js": "/DongSeoNamBOOK/static/js/2.302da6f3.chunk.js",
     "static/js/2.302da6f3.chunk.js.map": "/DongSeoNamBOOK/static/js/2.302da6f3.chunk.js.map",
     "index.html": "/DongSeoNamBOOK/index.html",
-    "precache-manifest.885459551308b3de068412644dfc6d5d.js": "/DongSeoNamBOOK/precache-manifest.885459551308b3de068412644dfc6d5d.js",
+    "precache-manifest.71a770ced13b6b2d96eff94fd88f9860.js": "/DongSeoNamBOOK/precache-manifest.71a770ced13b6b2d96eff94fd88f9860.js",
     "service-worker.js": "/DongSeoNamBOOK/service-worker.js",
     "static/css/2.af0132db.chunk.css.map": "/DongSeoNamBOOK/static/css/2.af0132db.chunk.css.map",
     "static/css/main.b005f349.chunk.css.map": "/DongSeoNamBOOK/static/css/main.b005f349.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.af0132db.chunk.css",
     "static/js/2.302da6f3.chunk.js",
     "static/css/main.b005f349.chunk.css",
-    "static/js/main.b460551d.chunk.js"
+    "static/js/main.d19f73d1.chunk.js"
   ]
 }
