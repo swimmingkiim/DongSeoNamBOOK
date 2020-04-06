@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c3a18d80b89180447286effadef0b682",
+    "revision": "33f75584f1d9e200ff5a787e1f076476",
     "url": "/DongSeoNamBOOK/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/DongSeoNamBOOK/static/css/2.af0132db.chunk.css"
   },
   {
-    "revision": "c252c66abb6bbf030534",
+    "revision": "13398e9efd3c077346a1",
     "url": "/DongSeoNamBOOK/static/css/main.b005f349.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/DongSeoNamBOOK/static/js/2.d730e122.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c252c66abb6bbf030534",
-    "url": "/DongSeoNamBOOK/static/js/main.62a68f06.chunk.js"
+    "revision": "13398e9efd3c077346a1",
+    "url": "/DongSeoNamBOOK/static/js/main.567a7383.chunk.js"
   },
   {
     "revision": "888609591deaf25f602d",
