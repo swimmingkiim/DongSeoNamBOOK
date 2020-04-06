@@ -8,6 +8,11 @@
     .PDFPage {
         height: 85vh;
         overflow: auto;
+
+        > .react-pdf__Page__textContent {
+            top: 0;
+            left: 0;
+        }
     }
 
     menu {

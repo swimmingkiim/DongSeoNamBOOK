@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './BookListItem.scss';
 
 const BookListItem = () => {
@@ -17,7 +18,7 @@ const BookListItem = () => {
             <ul>
                 {
                     list.map((item) => {
-                        const url = `/DongSeoNamBOOK/books/book-name=${item}`;
+                        const url = `/DongSeoNamBOOK#/book-name?name=${item}`;
                         return (
                             <a href={url}>
                                 <li>{item}</li>

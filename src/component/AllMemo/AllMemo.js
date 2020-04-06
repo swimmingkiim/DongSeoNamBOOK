@@ -37,11 +37,12 @@ const AllMemo = ({ match }) => {
     ];
 
     useEffect(() => {
-        if (window.location.pathname === "/DongSeoNamBOOK" || 
-            window.location.pathname === "/DongSeoNamBOOK/") {
-                document.getElementsByClassName("AllMemoWrapper")[0].classList.remove("bookMode");
+
+        console.log(window.location)
+        if (window.location.hash.includes("book-name")) {
+                document.getElementsByClassName("AllMemoWrapper")[0].classList.add("bookMode");
         } else {
-            document.getElementsByClassName("AllMemoWrapper")[0].classList.add("bookMode");
+            document.getElementsByClassName("AllMemoWrapper")[0].classList.remove("bookMode");
         } 
     }, []);
 
