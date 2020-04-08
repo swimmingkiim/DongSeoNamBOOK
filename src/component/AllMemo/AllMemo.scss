@@ -28,8 +28,37 @@
             margin-top: 3%;
         }
 
-        > .addMemo {
-            
+        > .addMemoWrapper {
+
+            width: 100%;
+            height: 10%;
+            text-align: right;
+            margin-top: 3%;
+
+            > .addMemo {
+                min-width: 1.5em;
+                max-width: 2em;
+                min-height: 1.5em;
+                max-height: 2em;
+                padding: 0% 0%;
+                border-radius: 50%;
+                border: none;
+                background-color: $green;
+                font-size: 300%;
+                font-weight: 900;
+
+            }
         }
+
+        > .newMemoInput {
+            display: none;
+        }
+    }
+
+    > .goToHome {
+        position: fixed;
+        top: 0;
+        right: 0;
+
     }
 }

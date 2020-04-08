@@ -13,7 +13,6 @@
 
     > .innerMemoWrapper {
         width: 95%;
-        // min-height: 70%;
         height: fit-content;
         border-radius: .5em;
         padding: 3% 0;
@@ -23,9 +22,11 @@
         flex-direction: column;
         align-items: center;
 
-        > p {
+        > textarea {
             width: 95%;
-            height: fit-content;
+            columns: 50;
+            resize: none;
+            border: none;
         }
     }
 
@@ -60,6 +61,10 @@
 
         label + label, button + button {
             margin-left: 3%;
+        }
+        button + button {
+            margin-left: 3%;
+            margin-top: 2%;
         }
     }
 

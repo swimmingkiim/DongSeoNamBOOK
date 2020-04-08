@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './BookListItem.scss';
+import { connect } from 'react-redux';
 
-const BookListItem = () => {
+const BookListItem = ({ bookList }) => {
 
-    const list = [
-        "해리포터와 마법사의 돌",
-        "해리포터와 비밀의 방",
-        "해리포터와 아즈카반의 죄수",
-        "해리포터와 불의 잔",
-        "해리포터와 불사조 기사단",
-        "해리포터와 죽음의 성물"
-    ];
+    const list = [];
+    for(let key in bookList) {
+        list.push({
+            bookId: key, 
+            bookName: bookList[key].bookName
+        });
+    }
 
     return (
         <section className="BookListItemWrapper">
             <ul>
                 {
                     list.map((item) => {
-                        const url = `/DongSeoNamBOOK#/book-name?name=${item}`;
+                        const url = `/DongSeoNamBOOK#/books/${item.bookId}`;
                         return (
                             <a href={url}>
-                                <li>{item}</li>
+                                <li>{item.bookName}</li>
                             </a>
                         );
                     })
@@ -31,4 +31,12 @@ const BookListItem = () => {
     );
 }
 
-export default BookListItem;
+const mapStateToProps = state => ({
+    bookList: state
+});
+
+// const mapDispatchToProps = dispatch => ({
+//     none yet
+// });
+
+export default connect(mapStateToProps)(BookListItem);

@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import bookList from './store';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />
+const store = createStore(bookList);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
   ,document.getElementById('root')
 );
 

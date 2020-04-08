@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { pdfjs, Document, Page } from 'react-pdf';
 import './PDFviewer.scss';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
-import Title from '../Title';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -11,8 +10,8 @@ const PDFviewer = ( { match } ) => {
     const [numOfPages, setNumOfPages] = useState(0);
     const [pageNumber, setPageNumber] = useState(1);
     const [PDFratio, setPDFRatio] = useState(window.innerWidth * 0.5);
+    const [memoId, setMemoId] = useState(1);
     const targetFile = require(`../../pdf/Don_Quixote.pdf`);
-    console.log(window.innerWidth)
 
     const onDocumentLoad = ({ numPages }) => {
         console.log("onLoad completed")
@@ -29,10 +28,6 @@ const PDFviewer = ( { match } ) => {
         setPageNumber(pageNumber + 1);
     };
 
-    const onDragText = (event) => {
-        console.log(event.dataTransfer.getData("text"));
-    }
-
     const fixTextPosition = () => {
         const textLayer = document.getElementsByClassName("react-pdf__Page__textContent")[0];
         textLayer.style.top = 0;
@@ -42,16 +37,27 @@ const PDFviewer = ( { match } ) => {
 
     useEffect(() => {
         window.addEventListener("resize", (e) => {
-            console.log(window.innerHeight * 0.8);
             setPDFRatio(window.innerWidth * 0.5);
         });
         window.addEventListener("mouseup", (event) => {
             if (window.getSelection().type === "Range") {
-                console.log("selected");
-                const aTag = document.createElement("a");
-                aTag.style.backgroundColor = "pink";
-                window.getSelection().getRangeAt(0).surroundContents(aTag);
-                console.log(window.getSelection().getRangeAt(0));
+                const targetRange = window.getSelection().getRangeAt(0);
+                const newSpan = document.createElement("span");
+                newSpan.classList.add(`memoId${memoId}`);
+                setMemoId(memoId + 1);
+                newSpan.style.backgroundColor = "pink";
+                newSpan.style.color = "black";
+                if (targetRange.startContainer === targetRange.endContainer) {
+                    targetRange.surroundContents(newSpan);
+                } else {
+                    const expandedRange = document.createRange();
+                    expandedRange.setStart(targetRange.endContainer, 0);
+                    expandedRange.setEnd(targetRange.endContainer, targetRange.endOffset);
+                    expandedRange.surroundContents(newSpan);
+                    targetRange.startContainer.parentElement.appendChild(newSpan);
+                    newSpan.replaceWith(newSpan.innerText);
+                    targetRange.startContainer.parentElement.normalize();
+                }
             }
         })
     }, []);
