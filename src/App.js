@@ -8,12 +8,12 @@ import AllMemo from './component/AllMemo';
 const App = () => {
 
   return (
-      <HashRouter basename={`/${process.env.PUBLIC_URL}`}>
+      <HashRouter>
         <div id="bigWrapper">
           <Route exact="true" path="/" component={BookList} />
           <Route path="/books/:id" component={PDFviewer} />
           <Route exact="true" path="/" component={AllMemo} />
-          <Route path="/books/:id" component={AllMemo} />
+          <Route path="/books/:id" component={AllMemo} /> 
         </div>
       </HashRouter>
   );

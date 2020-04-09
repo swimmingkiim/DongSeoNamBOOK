@@ -8,7 +8,7 @@ const NewBookMemo = ({ bookList, editMemo }) => {
 
     const urlParse = window.location.hash.split("/");
     let bookId = -1;
-    let bookName = "";
+    let bookName = null;
     if (urlParse.includes("books")) {
         bookId = urlParse[urlParse.length - 1];
         bookName = bookList[bookId].bookName;
