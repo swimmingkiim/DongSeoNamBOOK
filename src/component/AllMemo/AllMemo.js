@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './AllMemo.scss';
 import Title from '../Title';
@@ -71,9 +72,9 @@ const AllMemo = ({ match, bookList }) => {
                 }
             </div>
             <nav>
-                <a className="goToHome" href="/DongSeoNamBOOK">
-                    <img src={HomeImg} alt="HOME" />
-                </a>
+                <Link to="/">
+                    <img  className="goToHome" src={HomeImg} alt="HOME" />
+                </Link>
                 <button className="addMemo" onClick={displayNewInput}>+</button>
             </nav>
         </section>

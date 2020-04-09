@@ -6,10 +6,11 @@ import './NewBookMemo.scss';
 
 const NewBookMemo = ({ bookList, editMemo }) => {
 
+    const urlParse = window.location.hash.split("/");
     let bookId = -1;
     let bookName = "";
-    if (window.location.hash.includes("books")) {
-        bookId = window.location.hash.split("/")[2];
+    if (urlParse.includes("books")) {
+        bookId = urlParse[urlParse.length - 1];
         bookName = bookList[bookId].bookName;
     } else {
         bookId = null;
@@ -19,8 +20,8 @@ const NewBookMemo = ({ bookList, editMemo }) => {
         const newInfos = e.target.parentNode.previousElementSibling;
         console.log(e.target.parentNode.previousElementSibling.getElementsByClassName("newBookName")[0]);
         return {
-            bookId: newInfos.getElementsByClassName("newBookName")[0].value,
-            bookName: bookList[newInfos.getElementsByClassName("newBookName")[0].value].bookName,
+            bookId: bookId || newInfos.getElementsByClassName("newBookName")[0].value,
+            bookName: bookName || bookList[newInfos.getElementsByClassName("newBookName")[0].value].bookName,
             pageNum: newInfos.getElementsByClassName("newPageNum")[0].value,
             rowNum: newInfos.getElementsByClassName("newRowNum")[0].value,
             memo: newInfos.getElementsByClassName("newText")[0].value

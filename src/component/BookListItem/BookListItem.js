@@ -18,11 +18,11 @@ const BookListItem = ({ bookList }) => {
             <ul>
                 {
                     list.map((item) => {
-                        const url = `/DongSeoNamBOOK#/books/${item.bookId}`;
+                        const url = `/books/${item.bookId}`;
                         return (
-                            <a href={url}>
+                            <Link to={url}>
                                 <li>{item.bookName}</li>
-                            </a>
+                            </Link>
                         );
                     })
                 }
