@@ -4,9 +4,11 @@ import './AllMemo.scss';
 import Title from '../Title';
 import ProgressBar from '../ProgressBar';
 import BookMemo from '../BookMemo';
+import NewBookMemo from '../NewBookMemo';
 
 const AllMemo = ({ match, bookList }) => {
-    const HomeImg = require("../../img/book.png");
+    console.log(bookList);
+    const HomeImg = require("../../img/shelf.png");
     const currBookId = Number(match.params.id);
     let listToDisplay = [];
     let title = "";
@@ -22,15 +24,12 @@ const AllMemo = ({ match, bookList }) => {
     }
     console.log(listToDisplay);
 
-    const displayNewInput = () => {
-        // const wrapper = document.getElementsByClassName("memoWrapper")[0];
-        // const newMemo = () => (<BookMemo memoInfo={emptyMemo} />);
-        // wrapper.prepend(newMemo());
-        // ----------------------------------------------------
-        //|              여기서부터 시작하기!                      |
-        // ----------------------------------------------------
+    const displayNewInput = (e) => {
+        const isDisabled = Object.values(document.getElementsByClassName("NewBookMemoWrapper")[0].classList).includes("disabled");
+        if (isDisabled === true) document.getElementsByClassName("NewBookMemoWrapper")[0].classList.remove("disabled");
+        else document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("disabled");
     };
-
+    
     useEffect(() => {
         if (window.location.hash.includes("books")) {
                 document.getElementsByClassName("AllMemoWrapper")[0].classList.add("bookMode");
@@ -42,6 +41,7 @@ const AllMemo = ({ match, bookList }) => {
         const textArea = document.getElementsByClassName("eachMemoText");
         for (let i = 0; i < textArea.length; i++) {
             console.log("bookmemo reloaded")
+            console.log(listToDisplay);
             textArea[i].style.height = textArea[i].scrollHeight + "px";
             console.log( textArea[i].value + textArea[i].style.height + "px");
         }
@@ -51,6 +51,7 @@ const AllMemo = ({ match, bookList }) => {
                 textArea[i].style.height = textArea[i].scrollHeight + "px";
             }
         });
+        document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("disabled");
     }, []);
 
 
@@ -59,6 +60,7 @@ const AllMemo = ({ match, bookList }) => {
             <Title title={title} />
             <ProgressBar ratio={80} />
             <div className="memoWrapper">
+                <NewBookMemo />
                 {
                     listToDisplay.length !== 0 ? listToDisplay.map((eachMemo) => {
                         return (
@@ -67,13 +69,13 @@ const AllMemo = ({ match, bookList }) => {
                     })
                     : <p>there are no memo yet!</p>
                 }
-                <div className="addMemoWrapper">
-                    <button className="addMemo" onClick={displayNewInput}>+</button>
-                </div>
             </div>
-            <a className="goToHome" href="/DongSeoNamBOOK">
-                <img src={HomeImg} alt="HOME" />
-            </a>
+            <nav>
+                <a className="goToHome" href="/DongSeoNamBOOK">
+                    <img src={HomeImg} alt="HOME" />
+                </a>
+                <button className="addMemo" onClick={displayNewInput}>+</button>
+            </nav>
         </section>
     );
 }

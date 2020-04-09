@@ -1,0 +1,103 @@
+@import '../../info';
+
+.NewBookMemoWrapper {
+    width: 95%;
+    // min-height: 30%;
+    height: fit-content;
+    background-color: $yellow;
+    border-radius: 1.5em;
+    padding: 3% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.disabled {
+        display: none;
+    }
+
+    > .innerMemoWrapper {
+        width: 95%;
+        height: fit-content;
+        border-radius: .5em;
+        padding: 3% 0;
+        background-color: $white;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        > select {
+            background-color: $white;
+
+            > option {
+                background-color: $yellow;
+            }
+        }
+
+        > .newMemo {
+            margin-left: 2.5%;
+            margin-bottom: 2.5%;
+            font-size: 1.2em;
+            border: none;
+
+            .newPageNum, .newRowNum {
+                text-align: center;
+                border: none;
+                width: 30%;
+                height: 2em;
+            }
+        }
+
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        > textarea {
+            width: 95%;
+            height: 5em;
+            columns: 50;
+            resize: none;
+            border: none;
+        }
+
+        > label {
+            float: left;
+            background-color: $green;
+            color: white;
+            width: fit-content;
+            padding: .5% 1%;
+            border-radius: 1em;
+        }
+    }
+
+    > .labelsAndButtons {
+        width: 95%;
+        text-align: right;
+
+        > button {
+            color: white;
+            background-color: $blue;
+            width: 10%;
+            height: 3em;
+            padding: .5%;
+            border: none;
+            border-radius: .5em;
+            &.deleteButton {
+                background-color: $red;
+            }
+        }
+
+        label + label, button + button {
+            margin-left: 3%;
+        }
+        button + button {
+            margin-left: 3%;
+            margin-top: 2%;
+        }
+    }
+
+    .innerMemoWrapper + .labelsAndButtons {
+        margin-top: 2%;
+    }
+}

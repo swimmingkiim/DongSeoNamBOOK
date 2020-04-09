@@ -55,6 +55,7 @@ const BookMemo = ({ memoInfo, editMemo }) => {
     };
 
     useEffect(() => {
+        console.log(`memo is ${memoInfo.memo}`);
         const targetMemo = document.getElementById(`memoId${memoInfo.memoId}`);
         targetMemo.value = memoInfo.memo;
         targetMemo.style.height = targetMemo.scrollHeight + "px";

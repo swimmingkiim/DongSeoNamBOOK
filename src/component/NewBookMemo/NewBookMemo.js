@@ -1,34 +1,59 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as editMemo from '../../store/module/bookList';
 import './NewBookMemo.scss';
 
-const NewBookMemo = ({ memoInfo }) => {
+const NewBookMemo = ({ bookList, editMemo }) => {
 
-    const saveMemo = (e) => {
-        const textArea = e.target.parentNode.previousElementSibling.children[0];
-        if (textArea.readOnly === false) textArea.readOnly = true;
-        e.target.style.display = "none";
-        e.target.previousElementSibling.style.display = "inline-block";
-        e.target.previousElementSibling.previousElementSibling.style.display = "inline-block";
-    };
-
-    const deleteMemo = (e) => {
-        console.log(e.target.parentNode.parentNode.remove());
+    let bookId = -1;
+    let bookName = "";
+    if (window.location.hash.includes("books")) {
+        bookId = window.location.hash.split("/")[2];
+        bookName = bookList[bookId].bookName;
+    } else {
+        bookId = null;
     }
 
-    useEffect(() => {
-        window.addEventListener("load", () => {
-            const textArea = document.getElementsByClassName("eachMemoText");
-            for (let i = 0; i < textArea.length; i++) {
-                textArea[i].style.height = textArea[i].scrollHeight + "px";
-            }
-        })
-        window.addEventListener("resize", () => {
-            const textArea = document.getElementsByClassName("eachMemoText");
-            for (let i = 0; i < textArea.length; i++) {
-                textArea[i].style.height = textArea[i].scrollHeight + "px";
-            }
-        })
-    }, []);
+    const getNewMemoInfo = (e) => {
+        const newInfos = e.target.parentNode.previousElementSibling;
+        console.log(e.target.parentNode.previousElementSibling.getElementsByClassName("newBookName")[0]);
+        return {
+            bookId: newInfos.getElementsByClassName("newBookName")[0].value,
+            bookName: bookList[newInfos.getElementsByClassName("newBookName")[0].value].bookName,
+            pageNum: newInfos.getElementsByClassName("newPageNum")[0].value,
+            rowNum: newInfos.getElementsByClassName("newRowNum")[0].value,
+            memo: newInfos.getElementsByClassName("newText")[0].value
+        }
+    };
+
+    const clearInput = (e) => {
+        const newInfos = e.target.parentNode.previousElementSibling.children;
+        for (let i = 0; i < newInfos.length; i++) {
+            if (newInfos[i].tagName !== "span") newInfos[i].value = "";
+        }
+        e.target.parentNode.previousElementSibling.getElementsByClassName("newPageNum")[0].value = "";
+        e.target.parentNode.previousElementSibling.getElementsByClassName("newRowNum")[0].value = "";
+        document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("disabled");
+    }
+
+    const addNewMemo = (e) => {
+        const newMemoInfo = getNewMemoInfo(e);
+        editMemo.addMemo(newMemoInfo);
+        clearInput(e);
+    };
+
+    // const deleteMemo = (e) => {
+    //     const newMemoInfo = document.getElementsByClassName("newMemo");
+    //     for (let i = 0; i < newMemoInfo.length; i++) {
+    //         newMemoInfo[i].value = "";
+    //     }
+    //     document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("disabled");
+    // }
+
+    // useEffect(() => {
+        
+    // }, []);
 
     const resizeMemoText = (e) => {
         e.target.style.height = e.target.scrollHeight + "px";
@@ -37,17 +62,44 @@ const NewBookMemo = ({ memoInfo }) => {
     return (
         <article className="NewBookMemoWrapper">
             <section className="innerMemoWrapper">
-                <textarea className="eachMemoText" onInput={(e) => resizeMemoText(e)} readOnly={true}>{memoInfo.memo}</textarea>
+                {
+                    bookId === null ?
+                    <select className="newMemo newBookName">
+                        <option>책이름을 선택하세요</option>
+                        {
+                            Object.values(bookList).map((bookObj) => {
+                                return (
+                                    <option label={bookObj.bookName} value={bookObj.bookId}>{bookObj.bookName}</option>
+                                );
+                            })
+                        }
+                    </select>
+                    : <input className="newMemo newBookName" type="text" name="bookName" value={bookName} readOnly={true} />
+                }
+                <div className="newMemo">
+                    <input className="newMemo newPageNum" type="number" name="pageNum" placeholder="?"/>
+                    <span>쪽</span>
+                </div>
+                <div className="newMemo">
+                    <input className="newMemo newRowNum" type="number" name="rowNum"  placeholder="?"/>
+                    <span>번째 줄</span>
+                </div>
+                <textarea className="newMemo newText" onInput={(e) => resizeMemoText(e)} placeholder="이 부분에 대한 당신의 생각을 입력하세요:)"></textarea>
             </section>
             <section className="labelsAndButtons">
-                <label>{memoInfo.bookName}</label>
-                <label>{memoInfo.pageNum + "쪽"}</label>
-                <label>{memoInfo.rowNum + "번째 줄"}</label>
-                <button className="saveButton" onClick={(e) => saveMemo(e)}>저장</button>
-                <button className="deleteButton" onClick={(e) => deleteMemo(e)}>취소</button>
+                <button className="saveButton" onClick={(e) => addNewMemo(e)}>저장</button>
+                <button className="deleteButton" onClick={(e) => clearInput(e)}>취소</button>
             </section>
         </article>
     );
 }
 
-export default NewBookMemo;
+const mapStateToProps = state => ({
+    bookList: state
+});
+
+const mapDispatchTOProps = dispatch => ({
+    editMemo: bindActionCreators(editMemo, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchTOProps)(NewBookMemo);
