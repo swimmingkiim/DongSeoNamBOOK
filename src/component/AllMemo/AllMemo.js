@@ -13,6 +13,7 @@ const AllMemo = ({ bookList }) => {
     const HomeImg = require("../../img/shelf.png");
     const menuImg = require("../../img/menu.png");
     const plusImg = require("../../img/plus.png");
+    const closeImg = require("../../img/close.png");
     const urlParse = window.location.hash.split("/");
     const currBookId = urlParse.includes("books") ? Number(urlParse[urlParse.length - 1]) : undefined;
     let listToDisplay = [];
@@ -30,14 +31,22 @@ const AllMemo = ({ bookList }) => {
     console.log(listToDisplay);
 
     const displayNewInput = (e) => {
-        const isDisabled = Object.values(document.getElementsByClassName("NewBookMemoWrapper")[0].classList).includes("disabled");
-        if (isDisabled === true) document.getElementsByClassName("NewBookMemoWrapper")[0].classList.remove("disabled");
-        else document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("disabled");
+        let newMemoInput = document.getElementsByClassName("NewBookMemoWrapper");
+        if (currBookId) newMemoInput = newMemoInput[1];
+        else newMemoInput = newMemoInput[0];
+        console.log(newMemoInput)
+        if (newMemoInput.style.display !== "flex") newMemoInput.style.display = "flex"
+        else newMemoInput.style.display = "none";
     };
     
     const displayBookList = () => {
         document.getElementsByClassName("AllMemoWrapper")[0].style.display = "none";
         document.getElementsByClassName("BookListWrapper")[0].style.display = "block";
+    };
+
+    const displayMobilePDFviewer = () => {
+        document.getElementsByClassName("AllMemoWrapper")[0].style.display = "none";
+        document.getElementsByClassName("MobilePDFviewerWrapper")[0].style.display = "flex";
     };
 
     useEffect(() => {
@@ -89,7 +98,11 @@ const AllMemo = ({ bookList }) => {
                 </Link>
                 <button className="addMemo" onClick={displayNewInput}>+</button>
             </nav>
-            <Button Img={menuImg} alt="Book_List" onClick={displayBookList} />
+            {
+                currBookId ?
+                <Button Img={closeImg} alt="goBackToPDF" onClick={displayMobilePDFviewer} />
+                : <Button Img={menuImg} alt="bookList" onClick={displayBookList} />
+            }
             <Button Img={plusImg} alt="New_Memo" onClick={displayNewInput} />
         </section>
     );

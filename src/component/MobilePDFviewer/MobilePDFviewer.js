@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './MobilePDFviewer.scss';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import Button from '../Button';
+import NewBookMemo from '../NewBookMemo';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -40,18 +41,17 @@ const MobilePDFviewer = () => {
     };
 
     const goToBookMemo = (e) => {
-        e.target.parentElement.parentElement.parentElement.classList.add("disabled");
+        e.target.parentElement.parentElement.parentElement.style.display = "none";
         document.getElementsByClassName("AllMemoWrapper")[0].style.display = "flex";
     }
 
     const goToAllMemo = (e) => {
-        e.target.parentElement.parentElement.parentElement.classList.add("disabled");
+        e.target.parentElement.parentElement.parentElement.style.display = "none";
     }
 
     const goToNewMemo = (e) => {
-        e.target.parentElement.parentElement.parentElement.classList.add("disabled");
-        document.getElementsByClassName("AllMemoWrapper")[0].style.display = "flex";
-        document.getElementsByClassName("NewBookMemoWrapper")[0].style.display = "block";
+        document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("mobile");
+        document.getElementsByClassName("NewBookMemoWrapper")[0].style.display = "flex";
     }
 
     const fixTextPosition = () => {
@@ -103,6 +103,7 @@ const MobilePDFviewer = () => {
                 <Button Img={nextImg} alt={"goTo NextPage"} onClick={goToNextPage} />
                 <Button Img={plusImg} alt={"goTo NewMemo"} onClick={goToNewMemo} />
             </menu>
+            <NewBookMemo />
         </section>
     );
 }

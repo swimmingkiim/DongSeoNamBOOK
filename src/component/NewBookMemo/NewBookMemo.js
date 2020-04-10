@@ -31,11 +31,12 @@ const NewBookMemo = ({ bookList, editMemo }) => {
     const clearInput = (e) => {
         const newInfos = e.target.parentNode.previousElementSibling.children;
         for (let i = 0; i < newInfos.length; i++) {
-            if (newInfos[i].tagName !== "span") newInfos[i].value = "";
+            if (newInfos[i].tagName !== "span" && !Object.values(newInfos[i].classList).includes("newBookName")) newInfos[i].value = "";
         }
         e.target.parentNode.previousElementSibling.getElementsByClassName("newPageNum")[0].value = "";
         e.target.parentNode.previousElementSibling.getElementsByClassName("newRowNum")[0].value = "";
-        document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("disabled");
+        console.log(document.getElementsByClassName("NewBookMemoWrapper"));
+        e.target.parentNode.parentNode.style.display = "none";
     }
 
     const addNewMemo = (e) => {
