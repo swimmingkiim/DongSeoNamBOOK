@@ -101,3 +101,17 @@
         margin-top: 2%;
     }
 }
+
+@media only screen and (max-width: 414px) {
+    .NewBookMemoWrapper {
+        border-radius: .5em;
+        > .innerMemoWrapper {
+            > select {
+                width: 90%;
+                > option {
+                    font-size: 50%;
+                }
+            }
+        }
+    }
+}

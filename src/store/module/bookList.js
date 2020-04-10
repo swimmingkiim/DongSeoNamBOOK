@@ -16,54 +16,54 @@ export const deleteMemo = createAction(DELETE_MEMO, ids => ids);
 const bookListInitialState = {
     0: {
         bookId: 0,
-        bookName: "인생",
+        bookName: "돈키호테",
         status: "yet",
         bookCover: null,
         memos: {
             0: {
                 bookId: 0,
-                bookName: "인생",
+                bookName: "돈키호테",
                 pageNum: 0,
                 rowNum: 0,
                 quote: "",
                 memoId: 0,
-                memo: "인생은 마라톤이다."
+                memo: "이룩 할 수 없는 꿈을 꾸고, 이루어 질 수 없는 사랑을 하고, 이길 수 없는 적과 싸움을 하고, 견딜 수 없는 고통을 견디며, 잡힐 수 없는 저 하늘의 별을 잡자."
 
             }
         }
     },
     1: {
         bookId: 1,
-        bookName: "'양안서비스무역협정'의 쟁점과 대만 사회 갈등구조 변화",
+        bookName: "정부역할에 대한 시민의 기대: 한국, 일본 및 대만 비교",
         status: "yet",
         bookCover: null,
         memos: {
             1: {
                 bookId: 1,
-                bookName: "'양안서비스무역협정'의 쟁점과 대만 사회 갈등구조 변화",
+                bookName: "정부역할에 대한 시민의 기대: 한국, 일본 및 대만 비교",
                 pageNum: 0,
                 rowNum: 0,
                 quote: "",
                 memoId: 1,
-                memo: "이 논문은 ‘해바라기학생운동’ 등 최근 대만에서 양안서비스무역협정 체결을 둘러싸고 진행 중인 논란을 대만 사회 갈등구조의 변화라는 측면에서 분석하는 것을 목적으로 한다. 대만 사회의 갈등구조를 분석하는 기존의 연구들은 주로 족군갈등이나 족군갈등에 기반한 통일-독립 갈등을 변수로 삼은반면, 이 논문에서는 양안서비스무역협정 체결을 둘러싼 사회적 갈등이 계급및 세대 변수에 의해 보다 복잡하게 전개되고 있다고 주장한다. 특히 민진당을 지지하던 본성인 기업가들이 민진당의 입장과는 반대로 양안서비스무역협정 체결을 지지하는 점에 주목하며, 계급이익에 따른 민진당의 분화 가능성을 검토했다."
+                memo: "정부역할에 대한 시민의 기대: 한국, 일본 및 대만 비교"
 
             }
         }
     },
     2: {
         bookId: 2,
-        bookName: "대만의 국가정체성과 양안 관계",
+        bookName: "중국의 4차 산업혁명 담론과 전략, 제도",
         status: "yet",
         bookCover: null,
         memos: {
             2: {
                 bookId: 2,
-                bookName: "대만의 국가정체성과 양안 관계",
+                bookName: "중국의 4차 산업혁명 담론과 전략, 제도",
                 pageNum: 0,
                 rowNum: 0,
                 quote: "",
                 memoId: 2,
-                memo: "중국-대만 양안 관계는 대만의 양안 정책, 중국의 양안 정책, 미국의 양안 정책에 의해 영향을 받으며 변화해왔다."
+                memo: "중국의 4차 산업혁명 담론과 전략, 제도"
 
             }
         }

@@ -66,3 +66,21 @@
         }
     }
 }
+
+@media only screen and (max-width: 414px) {
+    .AllMemoWrapper {
+        height: 100%;
+        position: absolute;
+        top: 6%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &.disabled {
+            display: none;
+        }
+
+        > nav {
+            display: none;
+        }
+    }
+}

@@ -5,13 +5,15 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const PDFviewer = ( { match } ) => {
+const PDFviewer = () => {
 
     const [numOfPages, setNumOfPages] = useState(0);
     const [pageNumber, setPageNumber] = useState(1);
     const [PDFratio, setPDFRatio] = useState(window.innerWidth * 0.5);
     const [memoId, setMemoId] = useState(1);
-    const targetFile = require(`../../pdf/Don_Quixote.pdf`);
+    const urlParse = window.location.hash.split("/");
+    const currBookId = urlParse.includes("books") ? urlParse[urlParse.length - 1] : "report";
+    const targetFile = require(`../../pdf/${currBookId}.pdf`);
 
     const onDocumentLoad = ({ numPages }) => {
         console.log("onLoad completed")

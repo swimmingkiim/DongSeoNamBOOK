@@ -64,11 +64,50 @@
         }
         button + button {
             margin-left: 3%;
-            margin-top: 2%;
         }
     }
 
     .innerMemoWrapper + .labelsAndButtons {
         margin-top: 2%;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .BookMemoWrapper {
+        position: relative;
+        border-radius: .5em;
+
+        .labelsAndButtons {
+            font-size: 70%;
+
+            .bookName {
+                width: 100%;
+                padding: 2%;
+                text-align: center;
+            }
+            .pageNum, .rowNum {
+                display: none;
+            }
+            > button {
+                display: none;
+                width: 15%;
+                padding: 2%;
+                height: fit-content;
+                position: absolute;
+                right: 0%;
+                transform: translateX(110%);
+
+                &.modifyButton {
+                    bottom: 50%;
+                }
+                &.deleteButton {
+                    top: 60%;
+                }
+                &.saveButton {
+                    top: 50%;
+                    transform: translateX(110%) translateY(-50%);
+                }
+            }
+        }
     }
 }

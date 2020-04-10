@@ -46,10 +46,6 @@ const BookMemo = ({ memoInfo, editMemo }) => {
         });
     }
 
-    const setMemoText = (e) => {
-        e.target.value = memoInfo.memo;
-    }
-
     const resizeMemoText = (e) => {
         e.target.style.height = e.target.scrollHeight + "px";
     };
@@ -69,9 +65,9 @@ const BookMemo = ({ memoInfo, editMemo }) => {
             <textarea id={`memoId${memoInfo.memoId}`} className="eachMemoText" onInput={(e) => resizeMemoText(e)} readOnly={false}></textarea>
             </section>
             <section className="labelsAndButtons">
-                <label>{memoInfo.bookName}</label>
-                <label>{memoInfo.pageNum + "쪽"}</label>
-                <label>{memoInfo.rowNum + "번째 줄"}</label>
+                <label className="memoLabel bookName">{memoInfo.bookName}</label>
+                <label className="memoLabel pageNum">{memoInfo.pageNum + "쪽"}</label>
+                <label className="memoLabel rowNum">{memoInfo.rowNum + "번째 줄"}</label>
                 <button className="modifyButton" onClick={(e) => modifyMemo(e)}>수정</button>
                 <button className="deleteButton" onClick={(e) => deleteMemoFunc(e)}>삭제</button>
                 <button className="saveButton" onClick={(e) => saveMemoFunc(e)}>저장</button>

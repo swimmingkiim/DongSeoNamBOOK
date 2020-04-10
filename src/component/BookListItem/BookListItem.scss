@@ -3,6 +3,7 @@
 .BookListItemWrapper {
 
     > ul {
+        padding: 3%;
         list-style-type: none;
         display: flex;
         flex-direction: column;
@@ -20,8 +21,24 @@
             box-shadow: gray;
         }
 
+        & a:hover {
+            box-shadow: 0px 0px .5em black;
+        }
+
         a + a {
             margin-top: 5%;
+        }
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .BookListItemWrapper {
+        > ul a {
+            padding: 5% 1%;
+            background-color: $backgroundColor;
+            > li {
+                font-size: 70%;
+            }
         }
     }
 }

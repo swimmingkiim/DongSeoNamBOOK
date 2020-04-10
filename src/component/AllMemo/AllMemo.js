@@ -6,10 +6,13 @@ import Title from '../Title';
 import ProgressBar from '../ProgressBar';
 import BookMemo from '../BookMemo';
 import NewBookMemo from '../NewBookMemo';
+import Button from '../Button';
 
 const AllMemo = ({ bookList }) => {
     console.log(bookList);
     const HomeImg = require("../../img/shelf.png");
+    const menuImg = require("../../img/menu.png");
+    const plusImg = require("../../img/plus.png");
     const urlParse = window.location.hash.split("/");
     const currBookId = urlParse.includes("books") ? Number(urlParse[urlParse.length - 1]) : undefined;
     let listToDisplay = [];
@@ -32,6 +35,11 @@ const AllMemo = ({ bookList }) => {
         else document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("disabled");
     };
     
+    const displayBookList = () => {
+        document.getElementsByClassName("AllMemoWrapper")[0].style.display = "none";
+        document.getElementsByClassName("BookListWrapper")[0].style.display = "block";
+    };
+
     useEffect(() => {
         if (window.location.hash.includes("books")) {
                 document.getElementsByClassName("AllMemoWrapper")[0].classList.add("bookMode");
@@ -54,6 +62,9 @@ const AllMemo = ({ bookList }) => {
             }
         });
         document.getElementsByClassName("NewBookMemoWrapper")[0].classList.add("disabled");
+        if (window.innerWidth <= 414 && currBookId !== undefined) {
+            document.getElementsByClassName("AllMemoWrapper")[0].classList.add("disabled");
+        }
     }, []);
 
 
@@ -78,6 +89,8 @@ const AllMemo = ({ bookList }) => {
                 </Link>
                 <button className="addMemo" onClick={displayNewInput}>+</button>
             </nav>
+            <Button Img={menuImg} alt="Book_List" onClick={displayBookList} />
+            <Button Img={plusImg} alt="New_Memo" onClick={displayNewInput} />
         </section>
     );
 }

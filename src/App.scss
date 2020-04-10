@@ -16,4 +16,20 @@
     padding: 1%;
   }
 
+  .disabled {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  #bigWrapper {
+    padding: 0% 5%;
+    flex-direction: column;
+
+    & .container {
+      width: 90%;
+      background-color: $white;
+      padding: 0% 5% 5% 5%;
+    }
+  }
 }
