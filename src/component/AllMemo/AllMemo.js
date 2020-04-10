@@ -7,13 +7,14 @@ import ProgressBar from '../ProgressBar';
 import BookMemo from '../BookMemo';
 import NewBookMemo from '../NewBookMemo';
 
-const AllMemo = ({ match, bookList }) => {
+const AllMemo = ({ bookList }) => {
     console.log(bookList);
     const HomeImg = require("../../img/shelf.png");
-    const currBookId = Number(match.params.id);
+    const urlParse = window.location.hash.split("/");
+    const currBookId = urlParse.includes("books") ? Number(urlParse[urlParse.length - 1]) : undefined;
     let listToDisplay = [];
     let title = "";
-    if (currBookId >= 0) {
+    if (currBookId !== undefined) {
         listToDisplay = Object.values(bookList[currBookId].memos);
         title = bookList[currBookId].bookName;
     } else {

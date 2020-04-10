@@ -10,7 +10,7 @@ const NewBookMemo = ({ bookList, editMemo }) => {
     let bookId = -1;
     let bookName = null;
     if (urlParse.includes("books")) {
-        bookId = urlParse[urlParse.length - 1];
+        bookId = Number(urlParse[urlParse.length - 1]);
         bookName = bookList[bookId].bookName;
     } else {
         bookId = null;
